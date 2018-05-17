@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hero Attack Monster</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Contrail One">
+</head>
+<body>
+  <div id="screen">
+
+    <!-- 上部分 -->
+    <div id="header">
+
+      <!-- 左邊部分(英雄) -->
+      <div class="hp-block hero-hp-block">
+        <!-- 血量圖條 -->
+        <div class="hp-bar">
+          <!-- 少血 -->
+          <div id="hero-hp-hurt"></div>
+        </div>
+        <!-- 血量文字 -->
+        <div class="hp-text">
+          <span id="hero-hp">130</span>
+          /
+          <span id="hero-max-hp">130</span>
+        </div>
+      </div>
+
+      <!-- 中間部分(回合) -->
+      <div id="round-num">10</div>
+
+      <!-- 右邊部分(怪獸) -->
+      <div class="hp-block monster-hp-block">
+        <div class="hp-bar">
+          <div id="monster-hp-hurt"></div>
+        </div>
+        <div class="hp-text">
+          <span id="monster-hp">130</span>
+          /
+          <span id="monster-max-hp">130</span>
+        </div>
+      </div>
+
+    </div>
+    <!-- 下部分 -->
+    <div id="plane">
+
+      <!-- 左邊部分(英雄) -->
+      <div id="hero-image-block">
+        <!-- 技能部分(英雄) -->
+        <div class="skill-block">
+          <img src="images/skill.png" alt="skill" id="skill" class="skill-image">
+        </div>
+        <!-- 角色部分(英雄) -->
+        <div class="character-block">
+          <img src="images/hero.png" alt="character" class="character-image hero-image">
+          <img class="effect-image" style="display: none">
+          <span class="hurt-text"> </span>
+        </div>
+      </div>
+
+      <!-- 右邊部分(怪獸) -->
+      <div id="monster-image-block">
+        <!-- 角色部分(怪獸) -->
+        <div class="character-block">
+          <img src="images/monster.png" alt="character" class="character-image monster-image">
+          <img class="effect-image" style="display: none">
+          <span class="hurt-text"> </span>
+        </div>
+      </div>
+
+      <!-- 結束畫面 -->    
+      <div id="dialog">
+        <div class="win-dialog">
+          <h2>獲得勝利！</h2>
+          <button onclick="location.reload();">再玩一次？</button>
+        </div>
+        <div class="lose-dialog">
+          <h2>不幸戰敗！</h2>
+          <button onclick="location.reload();">再次挑戰？</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/index.js"></script>
+</body>
+</html>
