@@ -87,6 +87,8 @@ class Hero extends BaseCharacter {
         _this.element.getElementsByClassName("heal-text")[0].classList.add("recovered");
         _this.element.getElementsByClassName("heal-text")[0].textContent = recover;
       }
+
+      _this.element.getElementsByClassName("effect-image")[0].src = 'images/effect/heal/'+ i +'.png';
       i++;
 
       if (i > 8) {
@@ -146,7 +148,7 @@ function endTurn() {
 
     setTimeout(function() {
       hero.heal();
-    }, 100);
+    }, 200);
 
     setTimeout(function() {
       monster.element.classList.add("attacking");
@@ -159,8 +161,8 @@ function endTurn() {
         } else {
           document.getElementsByClassName("skill-block")[0].style.display = "block";
         }
-      }, 500);
-    }, 100);
+      }, 700);
+    }, 400);
   }
 
 // Hero 點擊技能時觸發
