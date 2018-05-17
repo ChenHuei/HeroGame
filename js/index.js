@@ -72,6 +72,12 @@ class Hero extends BaseCharacter {
     var damage = Math.random() * (this.ap / 2) + (this.ap / 2);
     super.attack(character, Math.floor(damage));
   }
+  heal() {
+    var recover = Math.random() * (this.ap / 1.5) + (this.ap / 2);
+    this.hp += Math.floor(recover);
+    this.hp > this.maxHp ? this.hp = this.maxHp : this.hp;
+    super.updateHtml(this.hpElement, this.hurtElement);
+  }
   getHurt(damage) {
     super.getHurt(damage);
     super.updateHtml(this.hpElement, this.hurtElement);
@@ -114,6 +120,29 @@ function endTurn() {
     }
   }
 
+  function heroHeal() {
+
+    document.getElementsByClassName("skill-block")[0].style.display = "none";
+
+    setTimeout(function() {
+      hero.heal();
+    }, 100);
+
+    setTimeout(function() {
+      monster.element.classList.add("attacking");
+      setTimeout(function() {
+        monster.attack(hero);
+        monster.element.classList.remove("attacking");
+        endTurn();
+        if (hero.alive == false) {
+          finish();
+        } else {
+          document.getElementsByClassName("skill-block")[0].style.display = "block";
+        }
+      }, 500);
+    }, 100);
+  }
+
 // Hero 點擊技能時觸發
 function heroAttack() {
   // 隱藏技能按鈕
@@ -150,6 +179,10 @@ function addSkillEvent() {
     var skill = document.getElementById("skill");
     skill.onclick = function() {
       heroAttack();
+    }
+    var heal = document.getElementById("heal");
+    heal.onclick = function() {
+      heroHeal();
     }
   }
   addSkillEvent();
