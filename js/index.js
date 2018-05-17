@@ -25,13 +25,13 @@ class BaseCharacter {
     var i = 1;
 
     _this.id = setInterval(function() {
-      if (i == 1) {
-        _this.element.getElementsByClassName("effect-image")[0].style.display = "block";
-        _this.element.getElementsByClassName("hurt-text")[0].classList.add("attacked");
-        _this.element.getElementsByClassName("hurt-text")[0].textContent = damage;
-      }
-
+      _this.element.getElementsByClassName("effect-image")[0].style.display = "block";
       _this.element.getElementsByClassName("effect-image")[0].src = 'images/effect/blade/'+ i +'.png';
+
+      _this.element.getElementsByClassName("hurt-text")[0].classList.add("attacked");
+      _this.element.getElementsByClassName("hurt-text")[0].textContent = damage;
+
+      
       i++;
 
       if (i > 8) {
@@ -82,13 +82,13 @@ class Hero extends BaseCharacter {
     var i = 1;
 
     _this.id = setInterval(function() {
-      if (i == 1) {
-        _this.element.getElementsByClassName("effect-image")[0].style.display = "block";
-        _this.element.getElementsByClassName("heal-text")[0].classList.add("recovered");
-        _this.element.getElementsByClassName("heal-text")[0].textContent = recover;
-      }
-
+      _this.element.getElementsByClassName("effect-image")[0].style.display = "block";
       _this.element.getElementsByClassName("effect-image")[0].src = 'images/effect/heal/'+ i +'.png';
+
+      _this.element.getElementsByClassName("heal-text")[0].classList.add("recovered");
+      _this.element.getElementsByClassName("heal-text")[0].textContent = recover;
+
+      
       i++;
 
       if (i > 8) {
