@@ -161,7 +161,7 @@ function endTurn() {
         } else {
           document.getElementsByClassName("skill-block")[0].style.display = "block";
         }
-      }, 700);
+      }, 550);
     }, 400);
   }
 
@@ -195,6 +195,16 @@ function heroAttack() {
       finish();
     }
   }, 1100);
+}
+
+document.onkeyup = function(event) {
+  var key = String.fromCharCode(event.keyCode);
+
+  if (key == "A" && document.getElementsByClassName("skill-block")[0].style.display != "none") {
+    heroAttack();
+  } else if (key == "D" && document.getElementsByClassName("skill-block")[0].style.display != "none") {
+    heroHeal();
+  }
 }
 
 function addSkillEvent() {
