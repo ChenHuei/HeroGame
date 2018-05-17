@@ -73,11 +73,31 @@ class Hero extends BaseCharacter {
     super.attack(character, Math.floor(damage));
   }
   heal() {
-    var recover = Math.random() * (this.ap / 1.5) + (this.ap / 2);
-    this.hp += Math.floor(recover);
+    var recover = Math.floor(Math.random() * (this.ap / 1.5) + (this.ap / 2));
+    this.hp += recover;
     this.hp > this.maxHp ? this.hp = this.maxHp : this.hp;
     super.updateHtml(this.hpElement, this.hurtElement);
+
+    var _this = this;
+    var i = 1;
+
+    _this.id = setInterval(function() {
+      if (i == 1) {
+        _this.element.getElementsByClassName("effect-image")[0].style.display = "block";
+        _this.element.getElementsByClassName("heal-text")[0].classList.add("recovered");
+        _this.element.getElementsByClassName("heal-text")[0].textContent = recover;
+      }
+      i++;
+
+      if (i > 8) {
+        _this.element.getElementsByClassName("effect-image")[0].style.display = "none";
+        _this.element.getElementsByClassName("heal-text")[0].classList.remove("recovered");
+        _this.element.getElementsByClassName("heal-text")[0].textContent = "";
+        clearInterval(_this.id);
+      }
+    }, 50);    
   }
+
   getHurt(damage) {
     super.getHurt(damage);
     super.updateHtml(this.hpElement, this.hurtElement);
