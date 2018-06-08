@@ -21,8 +21,8 @@ class BaseCharacter {
       this.die();
     }
 
-    var _this = this;
-    var i = 1;
+    let _this = this;
+    let i = 1;
 
     _this.id = setInterval(function() {
       _this.element.getElementsByClassName("effect-image")[0].style.display = "block";
@@ -69,17 +69,17 @@ class Hero extends BaseCharacter {
     console.log("召喚英雄 " + this.name + "！");
   }
   attack(character) {
-    var damage = Math.random() * (this.ap / 2) + (this.ap / 2);
+    let damage = Math.random() * (this.ap / 2) + (this.ap / 2);
     super.attack(character, Math.floor(damage));
   }
   heal() {
-    var recover = Math.floor(Math.random() * (this.ap / 1.5) + (this.ap / 2));
+    let recover = Math.floor(Math.random() * (this.ap / 1.5) + (this.ap / 2));
     this.hp += recover;
     this.hp > this.maxHp ? this.hp = this.maxHp : this.hp;
     super.updateHtml(this.hpElement, this.hurtElement);
 
-    var _this = this;
-    var i = 1;
+    let _this = this;
+    let i = 1;
 
     _this.id = setInterval(function() {
       _this.element.getElementsByClassName("effect-image")[0].style.display = "block";
@@ -121,7 +121,7 @@ class Monster extends BaseCharacter {
     console.log("遇到怪獸 " + this.name + "！");
   }
   attack(character) {
-    var damage = Math.random() * (this.ap / 2) + (this.ap / 2);
+    let damage = Math.random() * (this.ap / 2) + (this.ap / 2);
     super.attack(character, Math.floor(damage));
   }
   getHurt(damage) {
@@ -130,9 +130,9 @@ class Monster extends BaseCharacter {
   }
 }
 
-var hero = new Hero("Alex", 130, 30);
-var monster = new Monster("Shan", 130, 20);
-var rounds = 10;
+let hero = new Hero("Alex", 130, 30);
+let monster = new Monster("Shan", 130, 20);
+let rounds = 10;
 
 function endTurn() {
     rounds--;
@@ -198,7 +198,7 @@ function heroAttack() {
 }
 
 document.onkeyup = function(event) {
-  var key = String.fromCharCode(event.keyCode);
+  let key = String.fromCharCode(event.keyCode);
 
   if (key == "A" && document.getElementsByClassName("skill-block")[0].style.display != "none") {
     heroAttack();
@@ -208,11 +208,11 @@ document.onkeyup = function(event) {
 }
 
 function addSkillEvent() {
-    var skill = document.getElementById("skill");
+    let skill = document.getElementById("skill");
     skill.onclick = function() {
       heroAttack();
     }
-    var heal = document.getElementById("heal");
+    let heal = document.getElementById("heal");
     heal.onclick = function() {
       heroHeal();
     }
@@ -220,7 +220,7 @@ function addSkillEvent() {
   addSkillEvent();
 
   function finish() {
-  var dialog = document.getElementById("dialog");
+  let dialog = document.getElementById("dialog");
   dialog.style.display = "block";
   if (monster.alive == false) {
     dialog.classList.add("win");
